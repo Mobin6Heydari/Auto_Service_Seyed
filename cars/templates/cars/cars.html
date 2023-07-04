@@ -1,0 +1,201 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="msapplication-TileColor" content="#0E0E0E">
+    <meta name="template-color" content="#0E0E0E">
+    <link rel="manifest" href="manifest.json.htm" crossorigin>
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="description" content="Index page">
+    <meta name="keywords" content="index, page">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/imgs/logo.jpg' %}">
+
+    <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+    <title>اتو سرویس سید</title>
+    <link href="{% static 'assets/css/rtl.css'%}" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Preloader Start-->
+    <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+          <div class="text-center">
+            <div class="loader"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header class="header sticky-bar">
+      <div class="container">
+        <div class="main-header">
+          <div class="header-left">
+            <div class="header-nav">
+              <nav class="nav-main-menu d-none d-xl-block">
+                <ul class="main-menu">
+                   <li class="has-children"><a class="active" href="{% url 'home:home' %}">صفحه اصلی</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'aboutus:aboutus' %}">درباره ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'contact:contact' %}">تماس با ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'product:product_list' %}">محصولات</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'cars:cars_list' %}">ماشین ها</a>
+                   </li>
+                 </ul>
+              </nav>
+              <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </header>
+    <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+      <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-content-area">
+          <div class="perfect-scroll">       
+            <div class="mobile-menu-wrap mobile-header-border">
+              <!-- mobile menu start-->
+                <nav>
+                  <ul class="mobile-menu font-heading">
+                   <li class="has-children"><a class="active" href="{% url 'home:home'%}">صفحه اصلی</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'aboutus:aboutus' %}">درباره ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'contact:contact' %}">تماس با ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'product:product_list' %}">محصولات</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'cars:cars_list' %}">ماشین ها</a>
+                   </li>
+                 </ul>
+                </nav>
+              <!-- mobile menu end-->
+            </div> 
+<div class="site-copyright color-gray-400">کپی رایت 1402 &copy; Agon - قالب آژانس. <br>طراحی شده توسط<a href="https://www.rtl-theme.com/agon-html-template/">&nbsp; لیمواستودیو</a></div>          </div>
+        </div>
+      </div>
+    </div>
+    <main class="main">
+      <section class="section-box">
+        <div class="banner-hero banner-breadcrums bg-gray-100">
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-lg-12">
+                <h1 class="text-display-3 color-gray-900 mb-20">ماشین ها</h1>
+                <p class="text-heading-6 color-gray-600 mb-20">نمبدونی ماشینت چند لیتر روغن م.تور لازم داره؟<br class="d-lg-block d-none">خب فقط کافیه ماشین خودت رو انتخاب کنی تا ما بهت نشون بدیم.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-box mt-90">
+        <div class="container">
+          <h2 class="text-heading-2 color-gray-900">لیست ماشین ها</h2>
+          <div class="row">
+            <div class="col-lg-6">
+              <p class="text-body-lead-large color-gray-600 mt-20">انواع ماشین های داخلی و خارجی</p>
+            </div>
+          </div>
+        </div>
+        <div class="container mt-70">
+          <div class="row">
+          {% for car in cars %}
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+              <div class="category-grid-3 hover-up">
+                <div class="category-img"><a href="{% url 'cars:cars_detail' car.id %}"><img src="{{ car.main_image.url }}" alt="car"></a></div>
+                <h4 class="text-heading-5 mb-5">{{ car.name }}</h4>
+                <p class="text-body-text color-gray-500">{{ car.type }}</p>
+              </div>
+            </div> 
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer mt-50">
+      <div class="container">
+        <div class="footer-top">
+        </div>
+        <div class="row">
+          <div class="col-lg-3 width-20 mb-30">
+          <h4 class="text-heading-5">تماس با</h4>
+          {% for contact in contact %}
+            <div class="mt-20 text-body-text color-gray-600 mb-20">{{ contact.addres }}</div>
+             <div class="mt-20 text-body-text color-gray-600">{{ contact.phone}}</div>
+            <div class="text-body-text color-gray-600">{{ contact.email }}</div>
+          {% endfor %}
+          </div>
+<div class="col-lg-3 width-20 mb-30">
+             <h4 class="text-heading-5">درباره ما</h4>
+             <ul class="menu-footer mt-20">
+               <li><a href="{% url 'aboutus:aboutus' %}">تجربیات ما</a></li>
+               <li><a href="{% url 'aboutus:aboutus' %}">تیم ما</a></li>
+               <li><a href="{% url 'aboutus:aboutus' %}">کار و وظایف ما</a></li>
+             </ul>
+           </div>
+           <div class="col-lg-3 width-20 mb-30">
+             <h4 class="text-heading-5">ماشین ها</h4>
+             <ul class="menu-footer mt-20">
+               <li><a href="{% url 'cars:cars_list' %}">ایران خودرو</a></li>
+               <li><a href="{% url 'cars:cars_list' %}">بنز</a></li>
+               <li><a href="{% url 'cars:cars_list' %}">ماشین های چینی</a></li>
+             </ul>
+           </div>
+           <div class="col-lg-3 width-20 mb-30">
+             <h4 class="text-heading-5">محصولات</h4>
+             <ul class="menu-footer mt-20">
+               <li><a href="{% url 'product:product_list' %}">محصولات جدید</a></li>
+               <li><a href="{% url 'product:product_list' %}">محصولات ویژه</a></li>
+               <li><a href="{% url 'product:product_list' %}">محصولات خاص</a></li>
+             </ul>
+           </div>
+           <div class="col-lg-3 width-16">
+             <h4 class="text-heading-5">پیوندهای مفید</h4>
+             <ul class="menu-footer mt-20">
+               <li><a href="{% url 'contact:contact' %}">یک پیشنهاد دهید</a></li>
+               <li><a href="{% url 'aboutus:aboutus' %}">نحوه کار</a></li>
+               <li><a href="{% url 'product:product_list' %}">قیمت ها</a></li>
+               <li><a href="{% url 'cars:cars_list' %}">برای ماشینم چقدر روغن استفاده کنم؟</a></li>
+             </ul>
+           </div>
+        </div>
+        <div class="footer-bottom mt-20">
+          <div class="row">
+            <div class="col-md-6"><a class="text-body -text color-gray-400 ml-50" href="page-terms.html"></a><a class="text-body-text color-gray-400 ml-50" href="page- Terms.html"></a></div>
+            <div class="col-md-6 text-center text-lg-end text-md-end">
+            <div class="text-body-text color-gray-400 mr-50">
+            {% for social in contact %}
+              <div class="footer-social"></a><a class="icon-socials icon-instagram" href="{{ social.instagram_link }}"></a></div>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="{% static 'assets/js/vendors/jquery-3.6.0.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/jquery-migrate-3.3.0.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/waypoints.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/wow.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/magnific-popup.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/perfect-scrollbar.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/select2.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/isotope.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/scrollup.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/counterup.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/slick.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/jquery.elevatezoom.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/swiper-bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/noUISlider.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/slider.js'%}"></script>
+    <script src="{% static 'assets/js/main.js'%}"></script>
+  </body>
+</html>

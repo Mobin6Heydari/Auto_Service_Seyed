@@ -1,0 +1,185 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="msapplication-TileColor" content="#0E0E0E">
+    <meta name="template-color" content="#0E0E0E">
+    <link rel="manifest" href="manifest.json.htm" crossorigin>
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="description" content="Index page">
+    <meta name="keywords" content="index, page">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/imgs/logo.jpg' %}">
+
+    <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+    <title>اتو سرویس سید</title>
+    <link href="{% static 'assets/css/rtl.css'%}" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Preloader Start-->
+    <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+          <div class="text-center">
+            <div class="loader"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header class="header sticky-bar">
+      <div class="container">
+        <div class="main-header">
+          <div class="header-left">
+            <div class="header-nav">
+              <nav class="nav-main-menu d-none d-xl-block">
+                <ul class="main-menu">
+                   <li class="has-children"><a class="active" href="{% url 'home:home' %}">صفحه اصلی</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'aboutus:aboutus' %}">درباره ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'contact:contact' %}">تماس با ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'product:product_list' %}">محصولات</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'cars:cars_list' %}">ماشین ها</a>
+                   </li>
+                 </ul>
+              </nav>
+              <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </header>
+    <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+      <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-content-area">
+          <div class="perfect-scroll">       
+            <div class="mobile-menu-wrap mobile-header-border">
+              <!-- mobile menu start-->
+                <nav>
+                  <ul class="mobile-menu font-heading">
+                   <li class="has-children"><a class="active" href="{% url 'home:home' %}">صفحه اصلی</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'aboutus:aboutus' %}">درباره ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'contact:contact' %}">تماس با ما</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'product:product_list' %}">محصولات</a>
+                   </li>
+                   <li class="has-children"><a href="{% url 'cars:cars_list' %}">ماشین ها</a>
+                   </li>
+                 </ul>
+                </nav>
+              <!-- mobile menu end-->
+            </div> 
+<div class="site-copyright color-gray-400">کپی رایت 1402 &copy; Agon - قالب آژانس. <br>طراحی شده توسط<a href="https://www.rtl-theme.com/agon-html-template/">&nbsp; لیمواستودیو</a></div>          </div>
+        </div>
+      </div>
+    </div>
+    <main class="main">
+      <section class="section-box">
+        <div class="banner-hero nav-breadcrums bg-gray-100">
+          <div class="container">
+            <div class="breadcrumb">
+              <ul>
+              {% comment %} link {% endcomment %}
+                <li class="home"><a href="{% url 'home:home' %}">صفحه اصلی</a></li>
+                <li><a href="{% url 'product:product_list' %}">محصولات</a></li>
+                <li><a>{{ productmodel.type }}</a></li>
+                <li><a href="{% url 'product:product_detail' productmodel.id %}">{{ productmodel.name }}</a></li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-box mt-70"></div>
+      <section class="section-box">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="galleries">
+                <div class="detail-gallery"><span class="icon-plus"></span>
+                  <div class="product-image-slider">
+                    <figure class="border-radius-10"><img src="{{ productmodel.main_image.url }}" alt="product image"></figure>
+                    <figure class="border-radius-10"><img src="{{ productmodel.second_img.url }}" alt="product image"></figure>
+                    <figure class="border-radius-10"><img src="{{ productmodel.third_img.url }}" alt="product image"></figure> 
+                  </div>
+                </div>
+                <div class="slider-nav-thumbnails">
+                  <div><img src="{{ productmodel.main_image.url }}" alt="product image"></div>
+                  <div><img src="{{ productmodel.second_img.url }}" alt="product image"></div>
+                  <div><img src="{{ productmodel.third_img.url }}" alt="product image"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="product-info">
+                <div class="d-flex">
+                  <div class="box-category-product"><span class="tag-category">دسته بندی : {{ productmodel.type }}</span></div>
+                  <div class="box-rate-product">
+                    <div class="box-rating"><span><img src="{% static 'assets/imgs/page/homepage5/star-active.svg'%}" alt="agon"></span><span><img src="{% static 'assets/imgs/page/homepage5/star-active.svg'%}" alt="agon"></span><span><img src="{% static 'assets/imgs/page/homepage5/star-active.svg'%}" alt="agon "></span><span><img src="{% static 'assets/imgs/page/homepage5/star-active.svg'%}" alt="agon"></span><span><img src="{% static 'assets/imgs/page/homepage5/star-active.svg'%}" alt="agon"></span></div><span class="text-semibold"><span></span>
+                  </div>
+                </div>
+                <h1 class="text-heading-4 mt-30">{{ productmodel.name }}</h1>
+                <br>
+                <div class="box-price"><span class="price">قیمت : {{ productmodel.price }} تومان</span></div>
+                <br>
+                <br>
+                <p class="text-body-text color-gray-500">{{ productmodel.description }}</p>
+                <br>
+                {% comment %} <div class="box-countdown mt-40">
+                  <div class="box-processbar">
+                    <div class="text-hurry">عجله کنید!<br>فروش به زودی به پایان می رسد!</div>
+                    <br>
+                    <br>
+                    <div class="process-bar-line">
+                      <div class="process-bar-inner"></div>
+                  <div class="box-count">
+                    <div class="deals-countdown pl-5" data-countdown="2023/12/29 00:00:00"></div>
+                  </div>
+                </div> {% endcomment %}
+                {% comment %} <div class="detail-extralink mb-30">
+                  <div class="detail-qty border radius"><a class="qty-down" href="index.htm#"><i class="fi-rs-angle-small-down"></i> </a>
+                    <input class="qty-val" type="text" name="quantity" value="1" min="1"><a class="qty-up" href="index.htm#"><i class="fi-rs-angle-small-up"></i></a>
+                  </div>
+                  <div class="product-extra-link2">
+                    <button class="button button-add-to-cart" type="submit"><img src="{% static 'assets/imgs/page/single-product/cart.svg'%}"> افزودن به سبد خرید</button><a class ="action-btn hover-up" aria-label="Add to Wishlist" href="index.htm#"><img src="{% static 'assets/imgs/page/single-product/heart.svg'%}"></a ><a class="action-btn hover-up" aria-label="Compare" href="index.htm#"></a>
+                  </div>
+                </div> {% endcomment %}
+                <br>
+                <br>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer-->
+    <script src="{% static 'assets/js/vendors/jquery-3.6.0.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/jquery-migrate-3.3.0.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/waypoints.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/wow.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/magnific-popup.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/perfect-scrollbar.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/select2.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/isotope.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/scrollup.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/counterup.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/slick.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/jquery.elevatezoom.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/swiper-bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/noUISlider.js'%}"></script>
+    <script src="{% static 'assets/js/vendors/slider.js'%}"></script>
+    <script src="{% static 'assets/js/main.js'%}"></script>
+  </body>
+</html>
